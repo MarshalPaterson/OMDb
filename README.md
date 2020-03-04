@@ -1,7 +1,5 @@
 # OMDb
-Demo app for React Native using the OMBD API. Focused on the Star Trek movies.
-
-# Buisness Case
+Demo app for React Native using the OMBD API. Focused on the Star Trek movies. OMDB API – https://www.omdbapi.com/
 
 
 [![Build Status](https://travis-ci.org/MarshalPaterson/OMDb.svg?branch=master)](https://travis-ci.org/MarshalPaterson/OMDb) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -9,7 +7,7 @@ Demo app for React Native using the OMBD API. Focused on the Star Trek movies.
 # Solution Design
 ![Alt text](solution_design/design.png?raw=true "Design")
 ## Demo:
-![Alt text](solution_design/demoapp.gif?raw=true "Demo")
+![Alt text](solution_design/omdb.mov.gif?raw=true "Demo")
 
 # Running the application - yarn (moved on from npm)
 ```javascript
@@ -70,7 +68,7 @@ There is also Travis-CI integration.
 Search on 'Title of Movie'
 
 ## TODO
-Need to add a app icon.
+Need to add an app icon.
 More Unit Tests
 
 # REACT NATIVE IS AWESOME!!!
