@@ -11,12 +11,12 @@ export default class AboutScreen extends Component<Props> {
       <View style={styles.container}>
         <View style={styles.bgImageWrapper}>
           <Image
-            source={require('../assets/m.png')}
+            source={require('../assets/st.jpg')}
             style={styles.bgImage}
           />
         </View>
         <Text style={styles.welcome}>
-          Welcome to Marvel Heroes, a React Native example.
+          Welcome to Star Trek, a React Native example.
         </Text>
       </View>
     );

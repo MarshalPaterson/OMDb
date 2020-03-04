@@ -41,7 +41,7 @@ const TabNavigator = createMaterialBottomTabNavigator(
     initialRouteName: 'Home',
     activeColor: '#f2f2f2',
     inactiveColor: '#FFFFFF',
-    barStyle: {backgroundColor: '#4d0000'},
+    barStyle: {backgroundColor: 'black'},
   },
 );
 

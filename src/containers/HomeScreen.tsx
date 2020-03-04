@@ -84,9 +84,10 @@ class HomeScreen extends Component {
   };
 
   handleChange = text => {
+    console.log(this.state)
     const newData = this.state.data.filter(item => {
-      let name = item.name;
-      const itemData = name.toUpperCase();
+      let t = item.Title;
+      const itemData = t.toUpperCase();
       const textData = text.toUpperCase();
 
       return itemData.indexOf(textData) > -1;
@@ -156,7 +157,7 @@ class HomeScreen extends Component {
                     source={require('../assets/m.png')}
                     style={styles.bgImage}
                   />
-                  <Text style={styles.textItem}>Marvel Heroes</Text>
+                  <Text style={styles.textItem}>OMDb - Star Trek</Text>
                   <ActivityIndicator style={styles.loaderImg} size="large" />
                 </View>
               </View>

@@ -29,13 +29,18 @@ export default class DetailScreen extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props.navigation.state.params.movie.imdbID)
-    this.getMovie(this.props.navigation.state.params.movie.imdbID)
+    if(this.props.navigation.state.params !== undefined) {
+      console.log(this.props.navigation.state.params.movie.imdbID)
+      this.getMovie(this.props.navigation.state.params.movie.imdbID)
+    }
+
   }
 
   componentWillReceiveProps() {
-    console.log(this.props.navigation.state.params.movie.imdbID)
-    this.getMovie(this.props.navigation.state.params.movie.imdbID)
+    if(this.props.navigation.state.params !== undefined) {
+      console.log(this.props.navigation.state.params.movie.imdbID)
+      this.getMovie(this.props.navigation.state.params.movie.imdbID)
+    }
   }
 
   getMovie = id => {
@@ -76,11 +81,13 @@ export default class DetailScreen extends Component {
                 <Text style={styles.description}>
                   {this.state.movie.Plot}
                 </Text>
+                <Text style={styles.description}>
+                  {this.state.movie.Language}
+                </Text>
+                <Text style={styles.description}>
+                  {this.state.movie.Runtime}
+                </Text>
               </View>
-        
-              <Text style={styles.nameTitleMain}>
-                movie stats have appeared in:
-              </Text>
             </View>
           </ScrollView>
       
@@ -88,20 +95,21 @@ export default class DetailScreen extends Component {
   };
 
   render() {
-    const {animatedValue} = this.state;
     const {navigation} = this.props;
 
     if (navigation.state.params === undefined) {
       return (
+        <SafeAreaView style={styles.container}>
         <View style={styles.container}>
           <View style={styles.bgImageWrapper}>
             <Image
-              source={require('../assets/m.png')}
+              source={require('../assets/st.jpg')}
               style={styles.bgImage}
             />
           </View>
-          <Text style={styles.welcome}>Please select a Movie!</Text>
+          <Text style={styles.welcome}>Please select a Star Trek movie!</Text>
         </View>
+        </SafeAreaView>
       );
     } else {
       const movie = navigation.state.params.movie;
@@ -174,10 +182,11 @@ const styles = StyleSheet.create({
     height: null,
   },
   welcome: {
-    fontSize: 18,
+    fontSize: 22,
     textAlign: 'center',
     marginTop: 320,
     color: 'white',
+    fontWeight: 'bold'
   },
   nameTitle: {
     fontSize: 24,
