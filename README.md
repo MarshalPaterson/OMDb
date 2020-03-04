@@ -62,14 +62,13 @@ yarn test
 ```
 Unit tests have been setup and some have been added, though better covered is needed.
 
-## Notes:
-The code as reduced comments, this was a choice to allow (hopefully) code readability.
-There is also Travis-CI integration.
-Search on 'Title of Movie'
-
-## TODO
-Need to add an app icon.
-More Unit Tests
+## Notes and TODO:
+ * The code as reduced comments, this was a choice to allow (hopefully) code readability.
+ * There is also Travis-CI integration.
+ * Search on 'Title of Movie'.
+ * Fix Unit Test fail.
+ * Need to add an app icon.
+ * More Unit Tests
 
 # REACT NATIVE IS AWESOME!!!
 ### SWIFT AND KOTLIN IS ALSO AWESOME!!!
