@@ -28,10 +28,11 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   welcome: {
-    fontSize: 18,
-    marginTop: 320,
+    fontSize: 22,
     textAlign: 'center',
+    marginTop: 320,
     color: 'white',
+    fontWeight: 'bold'
   },
   instructions: {
     textAlign: 'center',

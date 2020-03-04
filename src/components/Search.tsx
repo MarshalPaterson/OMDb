@@ -1,11 +1,9 @@
 import React, {Component} from 'react';
 import {
   View,
-  Text,
   StyleSheet,
   Dimensions,
   TextInput,
-  Button,
 } from 'react-native';
 
 const {width} = Dimensions.get('window');
@@ -23,8 +21,6 @@ export default class Search extends Component {
 
   render() {
     const {onSubmit} = this.props;
-    const {onChange} = this.props;
-    const {cancelSearch} = this.props;
     return (
       <View style={styles.container}>
         <TextInput

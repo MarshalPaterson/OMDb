@@ -18,38 +18,32 @@ export default class DetailScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      fadeValue: new Animated.Value(0),
       movie: null,
       loading: true,
-      comicsNumber: 0,
-      eventsNumber: 0,
-      seriesNumber: 0,
-      storiesNumber: 0,
     };
   }
 
   componentDidMount() {
-    if(this.props.navigation.state.params !== undefined) {
-      console.log(this.props.navigation.state.params.movie.imdbID)
-      this.getMovie(this.props.navigation.state.params.movie.imdbID)
-    }
+    // if(this.props.navigation.state.params !== undefined) {
+    //   this.getMovie(this.props.navigation.state.params.movie.imdbID)
+    // }
 
+    this.load();
+    this.props.navigation.addListener('willFocus', this.load);
   }
 
-  componentWillReceiveProps() {
-    if(this.props.navigation.state.params !== undefined) {
-      console.log(this.props.navigation.state.params.movie.imdbID)
-      this.getMovie(this.props.navigation.state.params.movie.imdbID)
-    }
-  }
+  load = () => {
+    this.getMovie(this.props.navigation.state.params.movie.imdbID);
+  };
 
   getMovie = id => {
-    API.getMovieById(id, {orderBy: '-onsaleDate'})
+    API.getMovieById(id)
       .then(res => {
-        console.log(res)
+        console.log(res);
         this.setState({
           movie: res,
-          loading: false
+          poster: res.Poster,
+          loading: false,
         });
       })
       .catch(err => {
@@ -58,61 +52,25 @@ export default class DetailScreen extends Component {
       });
   };
 
-  rendermovie = () => {
-    return (
-          <ScrollView
-            style={styles.container}
-            scrollEventThrottle={16}
-            >
-            <View style={styles.profile}>
-              <View style={{alignItems: 'center'}}>
-                <Image
-                  style={styles.image}
-                  source={{
-                    uri: `${this.state.movie.Poster}`,
-                  }}
-                />
-                <Text style={styles.nameTitle}>
-                  {this.state.movie.Title}
-                </Text>
-                <Text style={styles.description}>
-                  {this.state.movie.Actors}
-                </Text>
-                <Text style={styles.description}>
-                  {this.state.movie.Plot}
-                </Text>
-                <Text style={styles.description}>
-                  {this.state.movie.Language}
-                </Text>
-                <Text style={styles.description}>
-                  {this.state.movie.Runtime}
-                </Text>
-              </View>
-            </View>
-          </ScrollView>
-      
-    );
-  };
-
   render() {
     const {navigation} = this.props;
+    console.log(navigation.state.params);
 
-    if (navigation.state.params === undefined) {
+    if (this.state.movie === null) {
       return (
         <SafeAreaView style={styles.container}>
-        <View style={styles.container}>
-          <View style={styles.bgImageWrapper}>
-            <Image
-              source={require('../assets/st.jpg')}
-              style={styles.bgImage}
-            />
+          <View style={styles.container}>
+            <View style={styles.bgImageWrapper}>
+              <Image
+                source={require('../assets/st.jpg')}
+                style={styles.bgImage}
+              />
+            </View>
+            <Text style={styles.welcome}>Please select a Star Trek movie!</Text>
           </View>
-          <Text style={styles.welcome}>Please select a Star Trek movie!</Text>
-        </View>
         </SafeAreaView>
       );
     } else {
-      const movie = navigation.state.params.movie;
       return (
         <SafeAreaView style={styles.container}>
           <View style={styles.container}>
@@ -120,14 +78,41 @@ export default class DetailScreen extends Component {
               <View>
                 <View style={styles.bgImageWrapper}>
                   <Image
-                    source={require('../assets/m.png')}
+                    source={require('../assets/logo.png')}
                     style={styles.bgImage}
                   />
+                  <Text style={styles.textItem}>OMDb - Star Trek</Text>
                   <ActivityIndicator style={styles.loaderImg} size="large" />
                 </View>
               </View>
             ) : (
-              this.rendermovie()
+              <ScrollView style={styles.container} scrollEventThrottle={16}>
+                <View style={styles.profile}>
+                  <View style={{alignItems: 'center'}}>
+                    <Image
+                      style={styles.image}
+                      source={{
+                        uri: `${this.state.movie.Poster}`,
+                      }}
+                    />
+                    <Text style={styles.nameTitle}>
+                      {this.state.movie.Title}
+                    </Text>
+                    <Text style={styles.description}>
+                      {this.state.movie.Actors}
+                    </Text>
+                    <Text style={styles.description}>
+                      {this.state.movie.Plot}
+                    </Text>
+                    <Text style={styles.description}>
+                      {this.state.movie.Language}
+                    </Text>
+                    <Text style={styles.description}>
+                      {this.state.movie.Runtime}
+                    </Text>
+                  </View>
+                </View>
+              </ScrollView>
             )}
           </View>
         </SafeAreaView>
@@ -186,7 +171,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: 320,
     color: 'white',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   nameTitle: {
     fontSize: 24,

@@ -1,32 +1,6 @@
-import {MD5} from 'react-native-crypto-js';
-
-const BASE_URL = 'http://www.omdbapi.com/'; // http://www.omdbapi.com/?i=tt3896198&apikey=51f00cb9
-const PRIVATE_KEY = '';
-const PUBLIC_KEY = '51f00cb9';
-
-function objectToQueryParameters(paramObject) {
-  let queryParameters = '?';
-  Object.keys(paramObject).forEach(key => {
-    queryParameters += key + '=' + paramObject[key] + '&';
-  });
-
-  queryParameters = queryParameters.slice(0, queryParameters.length - 1);
-
-  return queryParameters;
-}
-
 class API {
-  getMovies(additionalParams, URL) {
-    const timestamp = Number(Date.now());
-    const hash = MD5(timestamp + PRIVATE_KEY + PUBLIC_KEY);
-
-    const params = {
-      ...additionalParams,
-      ts: timestamp,
-      apikey: PUBLIC_KEY,
-      hash,
-    };
-    const url = URL; // "http://www.omdbapi.com/?i=tt3896198&apikey=51f00cb9";
+  getMovies(URL) {
+    const url = URL; 
     console.log(url);
     return new Promise((resolve, reject) => {
       fetch(url, {
@@ -41,17 +15,7 @@ class API {
     });
   }
 
-
-  getMovieById(id, additionalParams) {
-    const timestamp = Number(Date.now());
-    const hash = MD5(timestamp + PRIVATE_KEY + PUBLIC_KEY);
-
-    const params = {
-      ...additionalParams,
-      ts: timestamp,
-      apikey: PUBLIC_KEY,
-      hash,
-    };
+  getMovieById(id) {
     const url = "http://www.omdbapi.com/?i="+ id +"&apikey=51f00cb9";
     return new Promise((resolve, reject) => {
       fetch(url, {
@@ -66,7 +30,6 @@ class API {
     });
   };
 }
-
 
 const apiSingleton = new API();
 export default apiSingleton;

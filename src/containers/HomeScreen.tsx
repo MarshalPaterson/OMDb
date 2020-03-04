@@ -25,7 +25,6 @@ class HomeScreen extends Component {
       loading: true,
       data: [],
       error: null,
-      firstmovie: null,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -40,8 +39,6 @@ class HomeScreen extends Component {
 
   componentDidMount() {
     this.getAllMovies();
-    //const api = API.apiGetAll() 
-
     this._start();
   }
 
@@ -58,11 +55,8 @@ class HomeScreen extends Component {
   };
 
   getAllMovies = () => {
-    var movies = Array()
-    API.getMovies({orderBy: '-modified'}, "http://www.omdbapi.com/?s=Star%20Trek&apikey=51f00cb9&")
+    API.getMovies("http://www.omdbapi.com/?s=Star%20Trek&apikey=51f00cb9&")
       .then(response => {
-
-        movies.push(response);
         this.setState({
           loading: false,
           data: response.Search,
@@ -146,15 +140,15 @@ class HomeScreen extends Component {
         }}>
         <SafeAreaView style={styles.container}>
           <View style={styles.container}>
-            <Image
-              source={require('../assets/l.png')}
+          <Image
+              source={require('../assets/logo.png')}
               style={styles.titleImageMain}
             />
             {this.state.loading ? (
               <View>
                 <View style={styles.bgImageWrapper}>
                   <Image
-                    source={require('../assets/m.png')}
+                    source={require('../assets/logo.png')}
                     style={styles.bgImage}
                   />
                   <Text style={styles.textItem}>OMDb - Star Trek</Text>

@@ -9,9 +9,9 @@ import TabIcon from './components/tabIcon';
 
 console.disableYellowBox = true;
 
-const homeIcon = require('./assets/m.png');
-const detailIcon = require('./assets/m.png');
-const aboutIcon = require('./assets/m.png');
+const homeIcon = require('./assets/m.jpg');
+const detailIcon = require('./assets/d.jpg');
+const aboutIcon = require('./assets/a.jpg');
 
 const TabNavigator = createMaterialBottomTabNavigator(
   {
@@ -41,7 +41,7 @@ const TabNavigator = createMaterialBottomTabNavigator(
     initialRouteName: 'Home',
     activeColor: '#f2f2f2',
     inactiveColor: '#FFFFFF',
-    barStyle: {backgroundColor: 'black'},
+    barStyle: {backgroundColor: 'black', padding: 2},
   },
 );
 
