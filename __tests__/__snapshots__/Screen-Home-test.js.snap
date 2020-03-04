@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "height": 1334,
+      "opacity": 0,
+      "width": 750,
+    }
+  }
+>
+  <RCTSafeAreaView
+    emulateUnlessSupported={true}
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "white",
+        "flex": 1,
+        "justifyContent": "center",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "white",
+          "flex": 1,
+          "justifyContent": "center",
+        }
+      }
+    >
+      <Image
+        source={
+          Object {
+            "testUri": "../../../src/assets/logo.png",
+          }
+        }
+        style={
+          Object {
+            "height": 70,
+            "width": 245,
+          }
+        }
+      />
+      <View>
+        <View
+          style={
+            Object {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            }
+          }
+        >
+          <Image
+            source={
+              Object {
+                "testUri": "../../../src/assets/logo.png",
+              }
+            }
+            style={
+              Object {
+                "flex": 1,
+                "height": 1334,
+                "resizeMode": "cover",
+                "width": 750,
+              }
+            }
+          />
+          <Text
+            style={
+              Object {
+                "color": "white",
+                "fontSize": 20,
+                "textAlign": "center",
+                "top": 20,
+              }
+            }
+          >
+            OMDb - Star Trek
+          </Text>
+          <ActivityIndicator
+            animating={true}
+            color="#999999"
+            hidesWhenStopped={true}
+            size="large"
+            style={
+              Object {
+                "top": 40,
+              }
+            }
+          />
+        </View>
+      </View>
+    </View>
+  </RCTSafeAreaView>
+</View>
+`;
