@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import TabIcon from '../src/components/tabIcon';
+import TabIcon from '../src/components/TabIcon';
 
 jest.useFakeTimers();
 
