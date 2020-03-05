@@ -24,16 +24,14 @@ export default class DetailScreen extends Component {
   }
 
   componentDidMount() {
-    // if(this.props.navigation.state.params !== undefined) {
-    //   this.getMovie(this.props.navigation.state.params.movie.imdbID)
-    // }
-
     this.load();
     this.props.navigation.addListener('willFocus', this.load);
   }
 
   load = () => {
-    this.getMovie(this.props.navigation.state.params.movie.imdbID);
+    if (this.props.navigation.state.params !== undefined) {
+      this.getMovie(this.props.navigation.state.params.movie.imdbID);
+    }
   };
 
   getMovie = id => {
