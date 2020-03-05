@@ -2,7 +2,9 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import AboutScreen from '../src/containers/AboutScreen';
 
-test('renders correctly', () => {
+jest.useFakeTimers();
+
+test('renders correctly', async () => {
   const tree = renderer.create(<AboutScreen />).toJSON();
   expect(tree).toMatchSnapshot();
 });
